@@ -1,0 +1,45 @@
+{
+  "pathways": [
+    {
+      "id": "glycolysis",
+      "name": "Glycolysis",
+      "description": "Central carbon metabolism pathway",
+      "nodes": [
+        {"id": "g1", "name": "HK1", "type": "gene", "x": 120, "y": 100},
+        {"id": "p1", "name": "Hexokinase", "type": "protein", "x": 260, "y": 120},
+        {"id": "m1", "name": "Glucose-6P", "type": "metabolite", "x": 420, "y": 180},
+        {"id": "g2", "name": "PFKM", "type": "gene", "x": 240, "y": 260},
+        {"id": "p2", "name": "Phosphofructokinase", "type": "protein", "x": 380, "y": 300},
+        {"id": "m2", "name": "Fructose-1,6BP", "type": "metabolite", "x": 520, "y": 350},
+        {"id": "g3", "name": "PKM", "type": "gene", "x": 420, "y": 430},
+        {"id": "m3", "name": "Pyruvate", "type": "metabolite", "x": 620, "y": 460}
+      ],
+      "edges": [
+        {"id": "e1", "source": "g1", "target": "p1", "interaction": "encodes"},
+        {"id": "e2", "source": "p1", "target": "m1", "interaction": "produces"},
+        {"id": "e3", "source": "g2", "target": "p2", "interaction": "encodes"},
+        {"id": "e4", "source": "p2", "target": "m2", "interaction": "produces"},
+        {"id": "e5", "source": "m2", "target": "g3", "interaction": "activates"},
+        {"id": "e6", "source": "g3", "target": "m3", "interaction": "catalyzes"}
+      ]
+    },
+    {
+      "id": "mapk",
+      "name": "MAPK Signaling",
+      "description": "Mitogen-activated protein kinase cascade",
+      "nodes": [
+        {"id": "n1", "name": "EGFR", "type": "protein", "x": 100, "y": 120},
+        {"id": "n2", "name": "RAS", "type": "protein", "x": 280, "y": 140},
+        {"id": "n3", "name": "RAF", "type": "protein", "x": 430, "y": 220},
+        {"id": "n4", "name": "MEK", "type": "protein", "x": 550, "y": 300},
+        {"id": "n5", "name": "ERK", "type": "protein", "x": 700, "y": 360}
+      ],
+      "edges": [
+        {"id": "mke1", "source": "n1", "target": "n2", "interaction": "activates"},
+        {"id": "mke2", "source": "n2", "target": "n3", "interaction": "activates"},
+        {"id": "mke3", "source": "n3", "target": "n4", "interaction": "phosphorylates"},
+        {"id": "mke4", "source": "n4", "target": "n5", "interaction": "phosphorylates"}
+      ]
+    }
+  ]
+}
