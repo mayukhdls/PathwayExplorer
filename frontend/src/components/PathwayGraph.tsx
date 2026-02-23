@@ -29,6 +29,7 @@ export function PathwayGraph({ pathway }: Props) {
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const {
     layers,
+    darkMode,
     highlightedNodeIds,
     expressionByNode,
     knockoutDimmedNodes,
@@ -96,7 +97,7 @@ export function PathwayGraph({ pathway }: Props) {
     nodeGroups
       .append('circle')
       .attr('r', 24)
-      .attr('stroke', '#0f172a')
+      .attr('stroke', darkMode ? '#0f172a' : '#e2e8f0')
       .attr('stroke-width', 1.5)
       .attr('fill', (node) => getNodeColor(node.id, node.type, highlightedNodeIds, expressionByNode))
       .transition()
@@ -109,7 +110,7 @@ export function PathwayGraph({ pathway }: Props) {
       .attr('text-anchor', 'middle')
       .attr('dy', 40)
       .attr('font-size', 12)
-      .attr('fill', '#cbd5e1');
+      .attr('fill', darkMode ? '#cbd5e1' : '#334155');
 
     nodeGroups.call(
       d3
@@ -125,17 +126,18 @@ export function PathwayGraph({ pathway }: Props) {
     highlightedNodeIds,
     expressionByNode,
     layers.basePathway,
+    darkMode,
     dimmedNodeSet,
     deactivatedEdgeSet,
     setSelectedNode,
   ]);
 
   return (
-    <div className="relative h-full w-full rounded-xl bg-slate-800 shadow-lg">
+    <div className="relative h-full w-full rounded-xl bg-white shadow-lg dark:bg-slate-800">
       <svg ref={svgRef} className="h-full w-full" />
       <div
         ref={tooltipRef}
-        className="pointer-events-none absolute hidden rounded bg-slate-950 px-2 py-1 text-xs text-slate-100"
+        className="pointer-events-none absolute hidden rounded bg-slate-900 px-2 py-1 text-xs text-slate-100"
       />
     </div>
   );

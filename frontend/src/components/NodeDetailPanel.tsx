@@ -15,11 +15,11 @@ export function NodeDetailPanel() {
   }, [selectedNode, highlightedNodeIds, expressionByNode, knockoutDimmedNodes]);
 
   return (
-    <aside className="h-full w-80 border-l border-slate-700 bg-slate-900 p-4 text-slate-100">
+    <aside className="h-full w-80 border-l border-slate-200 bg-white p-4 text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
       <h2 className="mb-3 text-lg font-semibold">Node details</h2>
       {!selectedNode && <p className="text-sm opacity-70">Click a node to inspect details.</p>}
       {selectedNode && status && (
-        <div className="space-y-2 rounded bg-slate-800 p-3 text-sm">
+        <div className="space-y-2 rounded bg-slate-100 p-3 text-sm dark:bg-slate-800">
           <p><span className="font-semibold">Name:</span> {selectedNode.name}</p>
           <p><span className="font-semibold">ID:</span> {selectedNode.id}</p>
           <p><span className="font-semibold">Type:</span> {selectedNode.type}</p>
