@@ -36,13 +36,13 @@ export function TopBar() {
   };
 
   return (
-    <header className="flex items-center justify-between border-b border-slate-700 bg-slate-900 px-4 py-3 text-slate-100">
+    <header className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
       <div className="flex items-center gap-2">
         {(Object.keys(layers) as (keyof typeof layers)[]).map((layer) => (
           <button
             key={layer}
             className={`rounded px-3 py-1.5 text-xs font-semibold capitalize ${
-              layers[layer] ? 'bg-emerald-600' : 'bg-slate-700'
+              layers[layer] ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700'
             }`}
             onClick={() => toggleLayer(layer)}
           >
@@ -52,12 +52,12 @@ export function TopBar() {
       </div>
 
       <div className="flex items-center gap-3 text-xs">
-        <label className="rounded bg-slate-700 px-3 py-1.5 hover:bg-slate-600">
+        <label className="rounded bg-slate-200 px-3 py-1.5 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600">
           Gene list
           <input type="file" className="hidden" accept=".txt" onChange={onGeneListUpload} />
         </label>
 
-        <label className="rounded bg-slate-700 px-3 py-1.5 hover:bg-slate-600">
+        <label className="rounded bg-slate-200 px-3 py-1.5 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600">
           Expression CSV
           <input type="file" className="hidden" accept=".csv" onChange={onExpressionUpload} />
         </label>
@@ -66,7 +66,10 @@ export function TopBar() {
           Simulate knockout
         </button>
 
-        <button className="rounded bg-slate-700 px-3 py-1.5" onClick={toggleDarkMode}>
+        <button
+          className="rounded bg-slate-200 px-3 py-1.5 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600"
+          onClick={toggleDarkMode}
+        >
           {darkMode ? 'Light mode' : 'Dark mode'}
         </button>
       </div>
